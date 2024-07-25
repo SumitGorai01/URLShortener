@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/Navbar";
-const poppins = Poppins({ subsets: ["latin"], weight: "400" });
+import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
@@ -13,6 +11,7 @@ export const metadata: Metadata = {
     icon: "/chain.png",
   },
 };
+const inter = Inter({ subsets: ["latin"], weight: "400" });
 
 export default function RootLayout({
   children,
@@ -22,11 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <link rel="icon" href="/chain.png" />
-      <body className={poppins.className}>
-        <ThemeProvider attribute="class">
-          <Navbar />
-          {children}
-        </ThemeProvider>
+      <body className={inter.className}>
+        <Navbar />
+        {children}
         <Analytics />
       </body>
     </html>
